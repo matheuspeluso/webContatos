@@ -13,13 +13,14 @@ import { Component } from '@angular/core';
 })
 export class ConsultaContatosComponent {
 
-  //atributo para guardar os dados que vem da requisição http
   contatos: any[] = [];
+  mensagem : string = '';
 
   constructor(
     private httpClient: HttpClient
   ){}
-  //função ngOinit é executada sempre que o componnete é abeto
+
+  
   ngOnInit(){
     this.httpClient.get('http://localhost:8081/api/contatos')
     .subscribe({
@@ -27,7 +28,17 @@ export class ConsultaContatosComponent {
         this.contatos = data as any[];
       }
     });
-
   }
 
+  excluirCliente(idContato:string){
+    if(confirm('Deseja realmente exlcuir o cliente selecionado ?')){
+      this.httpClient.delete('http://localhost:8081/api/contatos/'+idContato, {responseType: 'text'}
+      ).subscribe({
+        next:(data)=>{
+          this.mensagem = data;
+          this.ngOnInit();//chamando novamente a função que recarrega a pagina para que a exclusão possa refletir na tela.
+        }
+      })
+    }
+  }
 }
