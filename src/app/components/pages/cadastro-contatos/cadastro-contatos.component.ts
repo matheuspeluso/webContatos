@@ -21,10 +21,15 @@ export class CadastroContatosComponent {
   ){}
 
   formulario_contato = new FormGroup({
-    nome: new FormControl('', [Validators.required]),
-    email: new FormControl('',[Validators.required]),
-    telefone: new FormControl('', [Validators.required])
+    nome: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    telefone : new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)])
   });
+
+  //objeto para exibir na pagina as mensagens de validação de cada campo do formulário
+  get f(){
+    return this.formulario_contato.controls;
+  }
 
   cadastrarContato(){
     this.htttpClient.post('http://localhost:8081/api/contatos',
@@ -36,6 +41,4 @@ export class CadastroContatosComponent {
       }
     })
   }
-
-
 }

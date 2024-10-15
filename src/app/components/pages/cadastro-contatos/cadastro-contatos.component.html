@@ -7,16 +7,25 @@
         <div class="col-md-5">
             <label>Nome do Contato: </label>
             <input type="text" class="form-control" formControlName="nome" placeholder="digite seu nome...">
+            <div class="text-danger" *ngIf="f['nome'].touched && f['nome'].invalid">
+                Por favor, informe o nome do contato com pelo menos 8 caracteres.
+            </div>
         </div>
 
         <div class="col-md-5">
             <label>Email: </label>
             <input type="email" class="form-control" formControlName="email" placeholder="digite seu email...">
+            <div class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
+                Por favor, informe um endereço de email valido.
+            </div>
         </div>
 
         <div class="col-md-2">
             <label>Telefone: </label>
             <input type="text" class="form-control" formControlName="telefone" placeholder="digite numero de telefone...">
+            <div class="text-danger" *ngIf="f['telefone'].touched && f['telefone'].invalid">
+                Por favor, informe um número de telefone valido.
+            </div>
         </div>
     </div>
 
