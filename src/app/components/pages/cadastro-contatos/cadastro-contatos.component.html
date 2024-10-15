@@ -1,6 +1,12 @@
 <h4>Cadastro de Contatos</h4>
 <p>Preencha o formulário para incluir um contato na lista.</p>
 
+<div *ngIf="mensagem != ''"> <!--local para mostrar a mensagem de retorno da api-->
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>{{ mensagem }}</strong>
+        <button (click)="mensagem = ''" type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+</div>
 <!--fazendo mapeamento do formulario-->
 <form [formGroup]="formulario_contato" (ngSubmit)="cadastrarContato()">
     <div class="row">

@@ -16,6 +16,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class CadastroContatosComponent {
 
+  mensagem: string = ''; //variavel que receber a mensagem de retorno da API
+
   constructor(
     private htttpClient: HttpClient
   ){}
@@ -37,7 +39,8 @@ export class CadastroContatosComponent {
     {responseType: 'text'})
     .subscribe({
       next: (data) =>{
-        alert(data);
+        this.mensagem = data;
+        this.formulario_contato.reset();
       }
     })
   }
