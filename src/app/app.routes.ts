@@ -16,7 +16,7 @@ export const routes: Routes = [
         component: ConsultaContatosComponent
     },
     {
-        path: 'pages/contatos/edicao',
+        path: 'pages/contatos/edicao/:idContato',
         component: EdicaoContatosComponent
     },
     //redirecinador para pagina Home

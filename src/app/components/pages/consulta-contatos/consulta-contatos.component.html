@@ -25,7 +25,7 @@
                 <td>{{ctt.email}}</td>
                 <td>{{ctt.telefone}}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary me-2">Editar</button>
+                    <button [routerLink]= "['/pages/contatos/edicao/', ctt.idContato]" class="btn btn-sm btn-primary me-2">Editar</button>
                     <button (click)="excluirCliente(ctt.idContato)" class="btn btn-sm btn-danger">Excluir</button>
                 </td>
             </tr>

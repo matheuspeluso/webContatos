@@ -24,10 +24,13 @@ export class CadastroContatosComponent {
 
   formulario_contato = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    telefone : new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)])
+    email: new FormControl('', [Validators.required, Validators.email]),
+    telefone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\(\d{2}\)\s\d{4,5}-\d{4}$/) // Aceita (XX) XXXX-XXXX ou (XX) XXXXX-XXXX
+    ])    
   });
-
+  
   //objeto para exibir na pagina as mensagens de validação de cada campo do formulário
   get f(){
     return this.formulario_contato.controls;
